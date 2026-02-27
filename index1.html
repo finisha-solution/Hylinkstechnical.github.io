@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hylinks Technical Training Institute</title>
+  <!-- Font Awesome 5 (free) for icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: #f0f5fb;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ----- background image (applied on main container) ----- */
+    .page-wrapper {
+      flex: 1;
+      background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* semi‑transparent overlay for readability */
+    .page-wrapper::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(3px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .header, main, footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ----- header with logo + motto ----- */
+    .header {
+      background: #003153;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-bottom: 5px solid #f4b532;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .school-logo {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: #003153;
+      box-shadow: 0 0 0 4px #f4b532;
+    }
+
+    .motto h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .motto p {
+      font-style: italic;
+      font-size: 1.3rem;
+      color: #f4e5b9;
+      border-left: 5px solid #f4b532;
+      padding-left: 15px;
+      margin-top: 5px;
+    }
+
+    .email-badge {
+      background: #f4b532;
+      color: #003153;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(244,181,50,0.3);
+    }
+
+    /* ----- main container ----- */
+    .container {
+      max-width: 1300px;
+      margin: 2rem auto;
+      padding: 0 25px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    /* cards & sections */
+    .elegant-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px -15px rgba(0, 49, 83, 0.3);
+      border: 1px solid rgba(244, 181, 50, 0.2);
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      color: #003153;
+      border-bottom: 3px solid #f4b532;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 1.9rem;
+    }
+
+    h2 i {
+      color: #f4b532;
+      font-size: 2rem;
+    }
+
+    /* ===== NAVIGATION TABS ===== */
+    .courses-tabs {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px -15px rgba(0, 49, 83, 0.3);
+      border: 1px solid rgba(244, 181, 50, 0.2);
+      margin-bottom: 25px;
+    }
+
+    .tabs-header {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      border-bottom: 2px solid rgba(244, 181, 50, 0.2);
+      padding-bottom: 5px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 50px 50px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    .tab-btn i {
+      color: #f4b532;
+      font-size: 1.3rem;
+    }
+
+    .tab-btn:hover {
+      color: #003153;
+    }
+
+    .tab-btn.active {
+      color: #003153;
+      background: rgba(244, 181, 50, 0.1);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -7px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #f4b532;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ----- courses table (index) ----- */
+    .courses-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,49,83,0.08);
+    }
+
+    .courses-table th {
+      background: #003153;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+      padding: 16px 12px;
+    }
+
+    .courses-table td {
+      padding: 15px 12px;
+      border-bottom: 1px solid #e0e9f0;
+    }
+
+    .courses-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .courses-table tbody tr:hover {
+      background: #fcf2de;
+    }
+
+    .duration, .fees {
+      font-weight: 500;
+      color: #1a4b6d;
+    }
+
+    .fees {
+      font-weight: 700;
+      color: #b45f06;
+    }
+
+    .index-badge {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      background: #f4b532;
+      color: #003153;
+      font-weight: bold;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      margin-right: 8px;
+      font-size: 0.9rem;
+    }
+
+    /* ===== PREMIER SHORTCOURSES GRID ===== */
+    .premier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .premier-card {
+      background: white;
+      border-radius: 30px;
+      padding: 25px;
+      box-shadow: 0 15px 30px -10px rgba(0, 49, 83, 0.1);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(244, 181, 50, 0.1);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .premier-card:hover {
+      transform: translateY(-10px);
+      border-color: #f4b532;
+      box-shadow: 0 30px 40px -15px rgba(244, 181, 50, 0.4);
+    }
+
+    .premier-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #003153, #1a4b6d);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      color: #f4b532;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 20px rgba(0, 49, 83, 0.2);
+    }
+
+    .premier-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #003153;
+      margin-bottom: 10px;
+    }
+
+    .premier-meta {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 2px dashed rgba(244, 181, 50, 0.3);
+    }
+
+    .premier-meta span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #555;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .premier-meta i {
+      color: #f4b532;
+      font-size: 1.1rem;
+    }
+
+    .view-units {
+      color: #003153;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.7;
+      transition: 0.3s;
+    }
+
+    .view-units i {
+      color: #f4b532;
+      transition: 0.3s;
+    }
+
+    .premier-card:hover .view-units {
+      opacity: 1;
+    }
+
+    .premier-card:hover .view-units i {
+      transform: translateX(5px);
+    }
+
+    .units-tooltip {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      background: #003153;
+      color: white;
+      padding: 25px;
+      border-radius: 30px;
+      width: 320px;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 100;
+      border: 3px solid #f4b532;
+      pointer-events: none;
+    }
+
+    .premier-card:hover .units-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .units-tooltip::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 15px 15px 0;
+      border-style: solid;
+      border-color: #f4b532 transparent transparent transparent;
+    }
+
+    .units-tooltip h4 {
+      color: #f4b532;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #f4b532;
+      padding-bottom: 12px;
+    }
+
+    .units-list {
+      list-style: none;
+    }
+
+    .units-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+    }
+
+    .units-list li i {
+      color: #f4b532;
+      font-size: 1rem;
+    }
+
+    /* newsletter & intakes */
+    .newsletter-box, .intakes-box {
+      background: linear-gradient(145deg, #ffffff, #f6faff);
+      border-radius: 28px;
+      padding: 1.8rem;
+      margin-bottom: 25px;
+      border-left: 10px solid #f4b532;
+      box-shadow: 0 10px 25px -10px rgba(0,49,83,0.2);
+    }
+
+    .newsletter-box h3, .intakes-box h3 {
+      color: #003153;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .intake-list {
+      list-style: none;
+    }
+
+    .intake-list li {
+      background: white;
+      margin: 12px 0;
+      padding: 15px 20px;
+      border-radius: 50px;
+      box-shadow: 0 3px 8px #d9e6f2;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.1rem;
+    }
+
+    .intake-list i {
+      color: #f4b532;
+      font-size: 1.5rem;
+      width: 30px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .newsletter-form input {
+      padding: 15px 20px;
+      border: 2px solid #d0deeb;
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .newsletter-form input:focus {
+      border-color: #f4b532;
+    }
+
+    .newsletter-form button {
+      background: #003153;
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      border: 2px solid #f4b532;
+    }
+
+    .newsletter-form button:hover {
+      background: #f4b532;
+      color: #003153;
+    }
+
+    .direct-email-btn {
+      background: #28a745;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0;
+      font-weight: bold;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* contact card */
+    .contact-card {
+      background: #003153;
+      color: white;
+      border-radius: 28px;
+      padding: 2rem;
+      margin-top: 20px;
+      box-shadow: 0 20px 25px -10px #001d33;
+    }
+
+    .contact-card h2 {
+      color: white;
+      border-bottom-color: #f4b532;
+    }
+
+    .contact-details p {
+      font-size: 1.3rem;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(255,255,255,0.1);
+      padding: 12px 20px;
+      border-radius: 50px;
+    }
+
+    .contact-details i {
+      color: #f4b532;
+      width: 30px;
+    }
+
+    .address-block {
+      background: #133b5c;
+      border-radius: 25px;
+      padding: 20px;
+      margin: 25px 0;
+      border-left: 8px solid #f4b532;
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 2rem;
+      background: #001d33;
+      color: #ccdbe9;
+      border-top: 5px solid #f4b532;
+    }
+
+    .footer-contacts {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .right-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (max-width: 1100px) {
+      .premier-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .premier-grid {
+        grid-template-columns: 1fr;
+      }
+      .tabs-header {
+        flex-direction: column;
+      }
+      .tab-btn {
+        width: 100%;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <!-- header with logo + motto -->
+  <header class="header">
+    <div class="logo-area">
+      <div class="school-logo">
+        <i class="fas fa-graduation-cap"></i>   <!-- simple graphic logo -->
+      </div>
+      <div>
+        <!-- hidden but logo text for screen readers (optional) -->
+        <span style="display: none;">Hylinks technica training Institute logo</span>
+      </div>
+    </div>
+    <div class="motto">
+      <h1>HYLINKS TECHNICAL TRAINING INSTTUTE</h1>
+      <p> For excellent & professional Training <i class="fas fa-quote-right" style="color:#f4b532;"></i></p>
+    </div>
+    <!-- small extra contact hint (optional) -->
+    <div style="color:#f4e5b9; font-size: 1rem;">
+      <i class="fas fa-phone-alt"></i> 0794 235607
+    </div>
+     <!-- institution email display -->
+    <div class="email-badge">
+      <i class="fas fa-envelope"></i> hylinkstechnical@gmail.com
+    </div>
+    <div class="left-col">
+      <!-- COURSES TABS SECTION -->
+      <div class="courses-tabs">
+        <!-- Tab Headers -->
+        <div class="tabs-header">
+          <button class="tab-btn active" onclick="switchTab('main-courses')">
+            <i class="fas fa-book-open"></i> Main Programmes
+          </button>
+          <button class="tab-btn" onclick="switchTab('short-courses')">
+            <i class="fas fa-bolt"></i>  <h2>premier courses offered<a href="premier.html">Check here</a></h2>
+          </button>
+        </div>
+      </div> 
+    </div> 
+    
+  </header>
+
+  <!-- main content -->
+  <main class="container">
+     
+
+
+   
+            <!-- LEFT COLUMN (Courses table + address block integrated inside contact later) -->
+            <div class="left-col">
+              <!-- Courses offered, duration, fees (index) card -->
+              <section class="card">
+                <H2><a href="requirement.html"><i class="fas fa-right-arrow" > </i>ENTRY REQUIREMENTS</a></H2>
+              <div id="main-courses">
+
+                <h2><i class="fas fa-book-open"></i> Programmes — duration & fees</h2>
+                <table class="courses-table">
+                  <thead>
+                    <tr><th>#</th><th>Course</th><th>Duration</th><th>Fees per term(KES)</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><span class="index-badge">1</span></td><td>Hairdressing & beauty therapy</td><td class="Cert">2 terms</td><td class="Dip">4 terms</td><td class="fees per term">15,000</td></tr>
+                    <tr><td><span class="index-badge">2</span></td><td>Fashion Design & Garment Making</td><td class="Cert">6 terms</td><td class="Dip">8 terms</td><td class="fees per term">15,000</td></tr>
+                    <tr><td><span class="index-badge">3</span></td><td>Information Communication Technology (ICT)</td><td class="Cert">6 terms</td><td class="Dip">8 terms</td><td class="fees per term">14,000</td></tr>
+                    <tr><td><span class="index-badge">4</span></td><td>Computer Operator (IT)</td><td class="Cert">6 terms</td><td class="Dip">-</td><td class="fees per term">14,000</td></tr>
+                    <tr><td><span class="index-badge">5</span></td><td>Electrical and Electronic Engineering</td><td class="Cert">6 terms</td><td class="Dip">8 terms</td><td class="fees per term">15,000</td></tr>
+                    <tr><td><span class="index-badge">6</span></td><td>Plumbing Grade 1, 2 & 3</td><td class="Cert">6 terms</td><td class="Dip">-</td><td class="fees per term">15,000</td></tr>
+                    <tr><td><span class="index-badge">7</span></td><td>Electrical Wireman / Installation Grade 1, 2 & 3</td><td class="Cert">6 terms</td><td class="Dip">-</td><td class="fees per term">15,000</td></tr>
+                    <tr><td><span class="index-badge">8</span></td><td>Community Development & Social work</td><td class="Cert">6 terms</td><td class="Dip">8 terms</td><td class="fees per term">15,000</td></tr>
+                    <tr><td><span class="index-badge">9</span></td><td>Business Management & Administration</td><td class="Cert">6 terms</td><td class="Dip">8 terms</td><td class="fees per term">14,000</td></tr>
+                    <tr><td><span class="index-badge">10</span></td><td>Sales Management & Markerting</td><td class="Cert">6 terms</td><td class="Dip">8 terms</td><td class="fees per term">14,000</td></tr>
+                    <tr><td><span class="index-badge">11</span></td><td>Front Office Operations & Administration</td><td class="Cert">6 terms</td><td class="Dip">8 terms</td><td class="fees per term">14,000</td></tr>
+                    <tr><td><span class="index-badge">12</span></td><td>Secretarial studies</td><td class="Cert">6 terms</td><td class="Dip">8 terms</td><td class="fees per term">14,000</td></tr>
+                    <tr><td><span class="index-badge">13</span></td><td>Journalism & Media studies</td><td class="Cert">6 terms</td><td class="Dip">8 terms</td><td class="fees per term">15,000</td></tr>
+                    <tr><td><span class="index-badge">14</span></td><td>Catering & Hotel Management</td><td class="Cert">6 terms</td><td class="Dip">8 terms</td><td class="fees per term">16,000</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div id="short-courses">
+                <table class="courses-table">
+                  <thead>
+                  <tr><h2>Short courses offered</h2></tr>
+                  <tr><th>#</th><th>Course</th><th>Duration</th><th>Fees (KES)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><span class="index-badge">1</span></td><td>Computer Packages</td><td>3 Months</td><td>4,500</td></tr>
+                  <tr><td><span class="index-badge">2</span></td><td>Cctv Installation</td><td>2 Months</td><td>12,000</td></tr>
+                  <tr><td><span class="index-badge">3</span></td><td>Nail Technology</td><td>1 Month</td><td>5,000</td></tr>
+                  <tr><td><span class="index-badge">4</span></td><td>Basic Garment Making</td><td>3 Months</td><td>15,000</td></tr>
+                  <tr><td><span class="index-badge">5</span></td><td>Barbering</td><td>1 Month</td><td>8,000</td></tr>
+                  <tr><td><span class="index-badge">6</span></td><td>Pastry & Bakery</td><td>3 Months</td><td>15,000</td></tr>
+                  <tr><td><span class="index-badge">7</span></td><td>Photography</td><td>3 Months</td><td>15,000</td></tr>
+                  <tr><td><span class="index-badge">8</span></td><td>Video Editing</td><td>3 Months</td><td>15,000</td></tr>
+                  
+                </tbody>
+                </table>
+              </div> 
+          
+        <p style="margin-top: 20px; font-style: italic; color: #2d4b65;"><i class="fas fa-info-circle" style="color:#f4b532;"></i> Fees are per year where applicable, includes registration. Installments available.</p>
+      </section>
+
+      <section>
+      </section>
+
+      
+
+      <!-- Contact & Address (required: contacts given, full address, also appears on left) -->
+      <section class="contact-card">
+        <h2><i class="fas fa-address-card"></i> Get in touch</h2>
+        <div class="contact-details">
+          <p><i class="fas fa-phone-alt"></i> <strong>0794 235607</strong>  /  0789 144344</p>
+          <p><i class="fas fa-map-pin"></i> <strong>KN Business Centre Building, 1st floor</strong></p>
+        </div>
+        <div class="address-block">
+          <i class="fas fa-location-dot" style="color:#f4b532; font-size: 2rem; margin-right: 10px;"></i>
+          <span>K.N Business centre Building 1st flr. <br> Along Masii-Tawa Rd, Opp. Masii Central Sec School <br> <strong>Masii Town</strong></span>
+        </div>
+        <!-- tiny map marker for visual -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+          <span style="background: #f4b532; color:#003153; padding:6px 14px; border-radius:40px;"><i class="fas fa-directions"></i> Opp. Masii Central Sec</span>
+          <span style="background: #1e4e6f; color:white; padding:6px 14px; border-radius:40px;"><i class="far fa-building"></i> 1st Floor</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- RIGHT COLUMN (newsletter page + intakes page) -->
+    <div class="right-col">
+      <!-- Newsletter (as a distinct page block) -->
+      <article class="newsletter-box">
+        <h3><i class="fas fa-envelope-open-text"></i> Newsletter</h3>
+        <p style="font-size: 1.15rem; margin-bottom: 20px;">Subscribe to receive course updates & intake alerts</p>
+        <div class="newsletter-form">
+            <form action="mailto:finishabeta@gmail.com" method="POST" enctype="text/plain" class="newsletter-form" id="newsletterForm">
+            <input type="text" name="Name" placeholder="Your full name" aria-label="Name" required>
+            <input type="email" name="Email" placeholder="Your email address" aria-label="Email" required>
+            <input type="hidden" name="Subject" value="Newsletter Subscription Request">
+            <input type="hidden" name="Message" value="Please add me to your newsletter mailing list">
+            <button type="submit" id="subscribe-btn">
+            <i class="fas fa-paper-plane"></i> Subscribe
+            </button>
+            </form> 
+             
+        </div>
+       
+        <p style="margin-top: 15px; color: #2c5a79;"><i class="fas fa-check-circle" style="color:#f4b532;"></i> We respect your inbox. No spam.</p>
+        <div id="newsletter-message" class="newsletter-message"></div>
+        <p style="margin-top: 15px; color: #2c5a79;"><i class="fas fa-check-circle" style="color:#f4b532;"></i> We'll send updates to your inbox. No spam.</p>
+        <p style="font-size: 0.9rem; color: #666;"><i class="fas fa-envelope"></i> Subscriptions sent to: hylinkstechnical@gmail.com</p>
+      </article>
+
+      <!-- Intakes page (explicit intakes section) -->
+      <article class="intakes-box">
+        <h3><i class="fas fa-calendar-alt"></i> 2026 Intakes</h3>
+        <ul class="intake-list">
+          <li><i class="fas fa-calendar-check"></i> <strong>January intake:</strong> 15 Jan 2026 (ongoing)</li>
+          <li><i class="fas fa-calendar-check"></i> <strong>May intake:</strong> 5 May 2026</li>
+          <li><i class="fas fa-calendar-check"></i> <strong>September intake:</strong> 8 Sep 2026</li>
+          <li><i class="fas fa-calendar-plus"></i> <strong>Distance learning:</strong> rolling admissions</li>
+        </ul>
+        <p style="background: white; border-radius: 60px; padding: 12px 18px; margin-top: 8px;"><i class="fas fa-clock" style="color:#f4b532;"></i> Early bird discount before each intake.</p>
+      </article>
+
+      <!-- Extra reminder of contacts (appear also on right) -->
+      <div style="background: rgba(244,181,50,0.2); backdrop-filter: blur(4px); border-radius: 24px; padding: 18px; margin-top: 12px; border: 1px solid #f4b532;">
+        <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 8px;"><i class="fas fa-phone-square-alt" style="color:#003153; font-size: 2rem;"></i> <strong>Call or WhatsApp:</strong> 0794 235607  /  0789 144344</p>
+      </div>
+       <p>our school also is equiped to make learners feel their potential.<a href="gallery.html"><h2>View Gallery</h2></a> </p>
+    </div>
+  </main>
+
+  <!-- footer with contact recap and school motto -->
+  <footer class="footer-note">
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 15px;">
+      <span><i class="fas fa-phone"></i> 0794 235607 / 0789 144344</span>
+      <div id="newsletter-message" class="newsletter-message"></div>
+        <p style="margin-top: 15px; color: #2c5a79;"><i class="fas fa-check-circle" style="color:#f4b532;"></i> We'll send updates to your inbox. No spam.</p>
+        <p style="font-size: 0.9rem; color: #666;"><i class="fas fa-envelope"></i> Subscriptions sent to: hylinkstechnical@gmail.com</p>
+      <span><i class="fas fa-map-marker-alt"></i> K.N Business Centre, Masii Town</span>
+      <span><i class="fas fa-quote-right"></i> “For excellent & professional Training”</span>
+    </div>
+    <p style="opacity: 0.8;">© 2025 Hylinks Technical Training Institute. All rights reserved.</p>
+  </footer>
+</div>
+<!-- optional overlay note: background image is set on .page-wrapper -->
+<!-- JavaScript for Tabs -->
+
+</body>
+<script type="script">
+  function switchTab(tabId) {
+    // Hide all tab panes
+    document.querySelectorAll('.tab-pane').forEach(pane => {
+      pane.classList.remove('active');
+    });
+    
+    // Deactivate all tab buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    
+    // Activate selected tab
+    document.getElementById(tabId).classList.add('active');
+    
+    // Find and activate the clicked button
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      if (btn.textContent.includes(tabId === 'main-courses' ? 'Main' : 'Premier')) {
+        btn.classList.add('active');
+      }
+    });
+  }
+</script>
+</html>
