@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Entry Requirements - Hylinks Technical Training Institute</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome 5 (free) for icons -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  
   <style>
     * {
       margin: 0;
@@ -20,13 +24,39 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 30px;
+      padding: 20px;
     }
 
     /* Demo wrapper to show section in context */
     .demo-wrapper {
       width: 100%;
-      max-width: 1300px;
+      max-width: 1400px;
+    }
+
+    /* Back button */
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .back-btn a {
+      background: #003153;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid #f4b532;
+      transition: all 0.3s;
+    }
+
+    .back-btn a:hover {
+      background: #f4b532;
+      color: #003153;
+      transform: translateX(-5px);
     }
 
     /* ===== ENTRY REQUIREMENTS SECTION - ELEGANT DESIGN ===== */
@@ -34,7 +64,7 @@
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       border-radius: 50px;
-      padding: 3rem;
+      padding: clamp(1.5rem, 5vw, 3rem);
       box-shadow: 0 30px 60px -20px rgba(0, 49, 83, 0.4);
       border: 1px solid rgba(244, 181, 50, 0.2);
     }
@@ -52,26 +82,28 @@
       display: flex;
       align-items: center;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .header-icon {
-      width: 80px;
-      height: 80px;
+      width: clamp(60px, 8vw, 80px);
+      height: clamp(60px, 8vw, 80px);
       background: linear-gradient(135deg, #003153, #1a4b6d);
       border-radius: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
+      font-size: clamp(28px, 4vw, 36px);
       color: #f4b532;
       box-shadow: 0 15px 30px rgba(0, 49, 83, 0.3);
     }
 
     .header-title h2 {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
       font-weight: 700;
       color: #003153;
       letter-spacing: -0.5px;
+      margin: 0;
     }
 
     .header-badge {
@@ -80,7 +112,7 @@
       padding: 12px 30px;
       border-radius: 60px;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -91,10 +123,8 @@
       font-size: 1.3rem;
     }
 
+    /* Bootstrap grid override for cards */
     .requirements-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
       margin-top: 2rem;
     }
 
@@ -108,6 +138,7 @@
       border: 1px solid rgba(244, 181, 50, 0.1);
       position: relative;
       overflow: hidden;
+      height: 100%;
     }
 
     .req-card:hover {
@@ -130,21 +161,21 @@
     }
 
     .card-icon {
-      width: 70px;
-      height: 70px;
+      width: clamp(60px, 8vw, 70px);
+      height: clamp(60px, 8vw, 70px);
       background: linear-gradient(135deg, #f4b532, #f9d423);
       border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
+      font-size: clamp(26px, 4vw, 30px);
       color: #003153;
       margin-bottom: 1.8rem;
       box-shadow: 0 10px 20px rgba(244, 181, 50, 0.2);
     }
 
     .req-level {
-      font-size: 1.8rem;
+      font-size: clamp(1.5rem, 4vw, 1.8rem);
       font-weight: 700;
       color: #003153;
       margin-bottom: 0.8rem;
@@ -152,7 +183,7 @@
     }
 
     .req-subtitle {
-      font-size: 1.1rem;
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
       color: #666;
       margin-bottom: 1.5rem;
       padding-bottom: 1.2rem;
@@ -161,6 +192,8 @@
 
     .req-details {
       list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     .req-details li {
@@ -169,7 +202,7 @@
       align-items: flex-start;
       gap: 12px;
       color: #444;
-      font-size: 1.05rem;
+      font-size: clamp(0.9rem, 2.5vw, 1.05rem);
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
@@ -181,6 +214,7 @@
       color: #f4b532;
       font-size: 1.1rem;
       margin-top: 3px;
+      flex-shrink: 0;
     }
 
     .grade-badge {
@@ -214,6 +248,7 @@
       align-items: center;
       gap: 20px;
       border: 1px solid #f4b532;
+      flex-wrap: wrap;
     }
 
     .note-icon {
@@ -231,8 +266,9 @@
 
     .note-text {
       color: #003153;
-      font-size: 1.1rem;
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
       font-weight: 500;
+      flex: 1;
     }
 
     .note-text strong {
@@ -241,37 +277,79 @@
       padding: 3px 10px;
       border-radius: 30px;
       margin: 0 5px;
+      white-space: nowrap;
     }
 
-    /* Responsive design */
-    @media (max-width: 1100px) {
-      .requirements-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    /* Quick reference badges */
+    .badge-container {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+      justify-content: center;
     }
 
-    @media (max-width: 700px) {
-      .requirements-grid {
-        grid-template-columns: 1fr;
-      }
+    .badge-container span {
+      padding: 8px 25px;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Responsive breakpoints */
+    @media (max-width: 768px) {
       .section-header {
         flex-direction: column;
         align-items: flex-start;
       }
-      .header-title h2 {
-        font-size: 2rem;
+      
+      .requirements-note {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
       }
-      .requirements-section {
-        padding: 2rem;
+      
+      .note-text strong {
+        white-space: normal;
+        display: inline-block;
+        margin: 5px 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      body {
+        padding: 15px;
+      }
+      
+      .req-card {
+        padding: 1.5rem;
+      }
+      
+      .badge-container span {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
   <div class="demo-wrapper">
+    <!-- Back Button -->
+    <div class="back-btn">
+      <a href="index1.html">
+        <i class="fas fa-arrow-left"></i> BACK TO HOME
+      </a>
+    </div>
+    <div class="back-btn">
+      <a href="premier.html">
+        <i class="fas fa-arrow-right"></i> PREMIER COURSES 
+      </a>
+    </div>
+
     <!-- ENTRY REQUIREMENTS SECTION -->
     <section class="requirements-section">
-    <h2><a href="index1.html">BACK</a></h2>
       <!-- Header with icon and badge -->
       <div class="section-header">
         <div class="header-title">
@@ -286,70 +364,80 @@
         </div>
       </div>
 
-      <!-- Requirements Grid - 4 Cards -->
+      <!-- Requirements Grid - Using Bootstrap Grid -->
       <div class="requirements-grid">
-        <!-- Card 1: Diploma (C- & above) -->
-        <div class="req-card">
-          <div class="card-icon">
-            <i class="fas fa-certificate"></i>
+        <div class="row g-4">
+          <!-- Card 1: Diploma (C- & above) -->
+          <div class="col-lg-3 col-md-6">
+            <div class="req-card">
+              <div class="card-icon">
+                <i class="fas fa-certificate"></i>
+              </div>
+              <div class="req-level">Diploma</div>
+              <div class="req-subtitle">C- & above</div>
+              <ul class="req-details">
+                <li><i class="fas fa-check-circle"></i> KCSE Mean Grade C- or higher</li>
+                <li><i class="fas fa-check-circle"></i> Certificate in relevant field with C-</li>
+                <li><i class="fas fa-check-circle"></i> Equivalent qualification recognized</li>
+                <li><i class="fas fa-check-circle"></i> 2 years relevant experience for mature entry</li>
+              </ul>
+              <span class="grade-badge">Minimum: C-</span>
+            </div>
           </div>
-          <div class="req-level">Diploma</div>
-          <div class="req-subtitle">C- & above</div>
-          <ul class="req-details">
-            <li><i class="fas fa-check-circle"></i> KCSE Mean Grade C- or higher</li>
-            <li><i class="fas fa-check-circle"></i> Certificate in relevant field with C-</li>
-            <li><i class="fas fa-check-circle"></i> Equivalent qualification recognized</li>
-            <li><i class="fas fa-check-circle"></i> 2 years relevant experience for mature entry</li>
-          </ul>
-          <span class="grade-badge">Minimum: C-</span>
-        </div>
 
-        <!-- Card 2: Certificate (D plain & D-) -->
-        <div class="req-card">
-          <div class="card-icon">
-            <i class="fas fa-file-alt"></i>
+          <!-- Card 2: Certificate (D plain & D-) -->
+          <div class="col-lg-3 col-md-6">
+            <div class="req-card">
+              <div class="card-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="req-level">Certificate</div>
+              <div class="req-subtitle">D plain & D-</div>
+              <ul class="req-details">
+                <li><i class="fas fa-check-circle"></i> KCSE Mean Grade D or D-</li>
+                <li><i class="fas fa-check-circle"></i> KCPE with basic literacy & numeracy</li>
+                <li><i class="fas fa-check-circle"></i> Vocational training certificate</li>
+                <li><i class="fas fa-check-circle"></i> 1 year relevant work experience</li>
+              </ul>
+              <span class="grade-badge">Minimum: D-</span>
+            </div>
           </div>
-          <div class="req-level">Certificate</div>
-          <div class="req-subtitle">D plain & D-</div>
-          <ul class="req-details">
-            <li><i class="fas fa-check-circle"></i> KCSE Mean Grade D or D-</li>
-            <li><i class="fas fa-check-circle"></i> KCPE with basic literacy & numeracy</li>
-            <li><i class="fas fa-check-circle"></i> Vocational training certificate</li>
-            <li><i class="fas fa-check-circle"></i> 1 year relevant work experience</li>
-          </ul>
-          <span class="grade-badge">Minimum: D-</span>
-        </div>
 
-        <!-- Card 3: Artisan (D- & below) -->
-        <div class="req-card">
-          <div class="card-icon">
-            <i class="fas fa-tools"></i>
+          <!-- Card 3: Artisan (D- & below) -->
+          <div class="col-lg-3 col-md-6">
+            <div class="req-card">
+              <div class="card-icon">
+                <i class="fas fa-tools"></i>
+              </div>
+              <div class="req-level">Artisan</div>
+              <div class="req-subtitle">D- & below</div>
+              <ul class="req-details">
+                <li><i class="fas fa-check-circle"></i> KCSE Mean Grade D- and below</li>
+                <li><i class="fas fa-check-circle"></i> KCPE certificate with interest in trade</li>
+                <li><i class="fas fa-check-circle"></i> Basic literacy and numeracy skills</li>
+                <li><i class="fas fa-check-circle"></i> No formal qualifications considered</li>
+              </ul>
+              <span class="grade-badge">Open to all</span>
+            </div>
           </div>
-          <div class="req-level">Artisan</div>
-          <div class="req-subtitle">D- & below</div>
-          <ul class="req-details">
-            <li><i class="fas fa-check-circle"></i> KCSE Mean Grade D- and below</li>
-            <li><i class="fas fa-check-circle"></i> KCPE certificate with interest in trade</li>
-            <li><i class="fas fa-check-circle"></i> Basic literacy and numeracy skills</li>
-            <li><i class="fas fa-check-circle"></i> No formal qualifications considered</li>
-          </ul>
-          <span class="grade-badge">Open to all</span>
-        </div>
 
-        <!-- Card 4: Short Courses (Open Entry) -->
-        <div class="req-card open-entry">
-          <div class="card-icon">
-            <i class="fas fa-bolt"></i>
+          <!-- Card 4: Short Courses (Open Entry) -->
+          <div class="col-lg-3 col-md-6">
+            <div class="req-card open-entry">
+              <div class="card-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div class="req-level">Short Courses</div>
+              <div class="req-subtitle">Open Entry</div>
+              <ul class="req-details">
+                <li><i class="fas fa-check-circle"></i> No minimum grade requirement</li>
+                <li><i class="fas fa-check-circle"></i> Open to all interested learners</li>
+                <li><i class="fas fa-check-circle"></i> Basic literacy recommended</li>
+                <li><i class="fas fa-check-circle"></i> Immediate enrollment available</li>
+              </ul>
+              <span class="grade-badge">Everyone welcome</span>
+            </div>
           </div>
-          <div class="req-level">Short Courses</div>
-          <div class="req-subtitle">Open Entry</div>
-          <ul class="req-details">
-            <li><i class="fas fa-check-circle"></i> No minimum grade requirement</li>
-            <li><i class="fas fa-check-circle"></i> Open to all interested learners</li>
-            <li><i class="fas fa-check-circle"></i> Basic literacy recommended</li>
-            <li><i class="fas fa-check-circle"></i> Immediate enrollment available</li>
-          </ul>
-          <span class="grade-badge">Everyone welcome</span>
         </div>
       </div>
 
@@ -360,27 +448,30 @@
         </div>
         <div class="note-text">
           <strong>Note:</strong> Equivalent qualifications from recognized institutions are accepted. 
-          Mature entry applicants (23+ years) with relevant work experience may be considered for diploma programs.
+         
           Short courses have <strong>100% open entry</strong> - no academic requirements needed!
         </div>
       </div>
 
       <!-- Quick reference badges -->
-      <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 25px; justify-content: center;">
-        <span style="background: #003153; color: white; padding: 8px 25px; border-radius: 40px; font-size: 0.95rem;">
+      <div class="badge-container">
+        <span style="background: #003153; color: white;">
           <i class="fas fa-arrow-up" style="color: #f4b532;"></i> Diploma: C- & above
         </span>
-        <span style="background: #003153; color: white; padding: 8px 25px; border-radius: 40px; font-size: 0.95rem;">
+        <span style="background: #003153; color: white;">
           <i class="fas fa-equals" style="color: #f4b532;"></i> Certificate: D plain & D-
         </span>
-        <span style="background: #003153; color: white; padding: 8px 25px; border-radius: 40px; font-size: 0.95rem;">
+        <span style="background: #003153; color: white;">
           <i class="fas fa-arrow-down" style="color: #f4b532;"></i> Artisan: D- & below
         </span>
-        <span style="background: #f4b532; color: #003153; padding: 8px 25px; border-radius: 40px; font-size: 0.95rem; font-weight: bold;">
+        <span style="background: #f4b532; color: #003153; font-weight: bold;">
           <i class="fas fa-door-open"></i> Short Courses: Open Entry
         </span>
       </div>
     </section>
   </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
