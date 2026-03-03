@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Premier Shortcourses - Elegant Design</title>
+  <title>Premier Shortcourses - Hylinks Technical Training Institute</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome 5 (free) for icons -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  
   <style>
     * {
       margin: 0;
@@ -20,18 +24,44 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 30px;
+      padding: 20px;
     }
 
     /* Background pattern for demo */
     .demo-wrapper {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1300px;
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(2px);
       border-radius: 50px;
-      padding: 30px;
+      padding: 20px;
       box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    }
+
+    /* Back button */
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .back-btn a {
+      background: #003153;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid #f4b532;
+      transition: all 0.3s;
+    }
+
+    .back-btn a:hover {
+      background: #f4b532;
+      color: #003153;
+      transform: translateX(-5px);
     }
 
     /* ===== PREMIER SHORTCOURSES - ELEGANT DESIGN ===== */
@@ -56,23 +86,24 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      flex-wrap: wrap;
     }
 
     .premier-icon-large {
-      width: 70px;
-      height: 70px;
+      width: clamp(60px, 8vw, 70px);
+      height: clamp(60px, 8vw, 70px);
       background: linear-gradient(135deg, #f4b532, #f9d423);
       border-radius: 25px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+      font-size: clamp(28px, 4vw, 32px);
       color: #003153;
       box-shadow: 0 10px 20px rgba(244, 181, 50, 0.3);
     }
 
     .premier-title-large {
-      font-size: 2.2rem;
+      font-size: clamp(1.8rem, 5vw, 2.2rem);
       font-weight: 700;
       color: #003153;
       letter-spacing: -0.5px;
@@ -102,10 +133,9 @@
       border-left: 4px solid #f4b532;
     }
 
+    /* Bootstrap grid override for cards */
     .premier-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
+      margin-top: 20px;
     }
 
     .premier-card {
@@ -117,6 +147,7 @@
       border: 1px solid rgba(244, 181, 50, 0.1);
       position: relative;
       cursor: pointer;
+      height: 100%;
     }
 
     .premier-card:hover {
@@ -131,21 +162,21 @@
     }
 
     .premier-icon {
-      width: 70px;
-      height: 70px;
+      width: clamp(60px, 8vw, 70px);
+      height: clamp(60px, 8vw, 70px);
       background: linear-gradient(135deg, #003153, #1a4b6d);
       border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
+      font-size: clamp(26px, 4vw, 30px);
       color: #f4b532;
       margin-bottom: 20px;
       box-shadow: 0 10px 20px rgba(0, 49, 83, 0.2);
     }
 
     .premier-title {
-      font-size: 1.5rem;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
       font-weight: 700;
       color: #003153;
       margin-bottom: 10px;
@@ -153,10 +184,11 @@
 
     .premier-meta {
       display: flex;
-      gap: 20px;
+      gap: 15px;
       margin-bottom: 15px;
       padding-bottom: 15px;
       border-bottom: 2px dashed rgba(244, 181, 50, 0.3);
+      flex-wrap: wrap;
     }
 
     .premier-meta span {
@@ -207,7 +239,8 @@
       color: white;
       padding: 25px;
       border-radius: 30px;
-      width: 320px;
+      width: 90%;
+      max-width: 320px;
       box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
       opacity: 0;
       visibility: hidden;
@@ -237,7 +270,7 @@
     .units-tooltip h4 {
       color: #f4b532;
       margin-bottom: 20px;
-      font-size: 1.3rem;
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -245,21 +278,19 @@
       padding-bottom: 12px;
     }
 
-    .units-tooltip h4 i {
-      font-size: 1.4rem;
-    }
-
     .units-list {
       list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
     .units-list li {
-      padding: 10px 0;
+      padding: 8px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     .units-list li:last-child {
@@ -268,7 +299,7 @@
 
     .units-list li i {
       color: #f4b532;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
     /* Decorative elements */
@@ -284,28 +315,59 @@
       pointer-events: none;
     }
 
-    @media (max-width: 1100px) {
-      .premier-grid {
-        grid-template-columns: repeat(2, 1fr);
+    /* Mobile adjustments for tooltip */
+    @media (max-width: 768px) {
+      .units-tooltip {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        width: 90%;
+        max-width: 300px;
+      }
+      
+      .premier-card:active .units-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      
+      .premier-badge {
+        font-size: 0.9rem;
+        padding: 8px 20px;
+      }
+      
+      .premier-section {
+        padding: 1.5rem;
       }
     }
 
-    @media (max-width: 700px) {
-      .premier-grid {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 576px) {
       .premier-header {
         flex-direction: column;
         align-items: flex-start;
+      }
+      
+      .premier-meta {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .demo-wrapper {
+        padding: 15px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="demo-wrapper">
+    <!-- Back Button -->
+    <div class="back-btn">
+      <a href="index1.html">
+        <i class="fas fa-arrow-left"></i> BACK TO HOME
+      </a>
+    </div>
 
-  
-  <div class="demo-wrapper"></h2></strong>
-    <strong><h2><a href="index1.html">BACK</a>
     <!-- PREMIER SHORTCOURSES SECTION - ELEGANT DESIGN -->
     <section class="premier-section">
       <!-- Header with large icon and title -->
@@ -314,7 +376,7 @@
           <div class="premier-icon-large">
             <i class="fas fa-crown"></i>
           </div>
-          <h2 class="premier-title-large">Premier Short Courses</h2>
+          <h1 class="premier-title-large">Premier Short Courses</h1>
         </div>
         <div class="premier-badge">
           <i class="fas fa-eye"></i> Hover to see units
@@ -327,104 +389,123 @@
         <span>Industry-recognized certification courses with comprehensive curriculum</span>
       </div>
 
-      <!-- Grid of premier courses -->
+      <!-- Grid of premier courses using Bootstrap grid -->
       <div class="premier-grid">
-        <!-- Course 1: Digital Marketing -->
-        <div class="premier-card">
-          <div class="card-inner">
-            <div class="premier-icon">
-              <i class="fas fa-laptop"></i>
-            </div>
-            <h3 class="premier-title">Advanced Computer operations and applications</h3>
-            <div class="premier-meta">
-              <span><i class="fas fa-clock"></i> 3 months</span>
-              <span><i class="fas fa-tag"></i> KES 9,000</span>
-            </div>
-            <div class="view-units">
-              <span>View course units</span>
-              <i class="fas fa-arrow-right"></i>
+        <div class="row g-4">
+          <!-- Course 1: Advanced Computer Operations -->
+          <div class="col-md-6 col-lg-4">
+            <div class="premier-card">
+              <div class="card-inner">
+                <div class="premier-icon">
+                  <i class="fas fa-laptop"></i>
+                </div>
+                <h3 class="premier-title">Advanced Computer Operations & Applications</h3>
+                <div class="premier-meta">
+                  <span><i class="fas fa-clock"></i> 3 months</span>
+                  <span><i class="fas fa-tag"></i> KES 9,000</span>
+                </div>
+                <div class="view-units">
+                  <span>View course units</span>
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+              </div>
+
+              <!-- Units tooltip on hover -->
+              <div class="units-tooltip">
+                <h4><i class="fas fa-book-open"></i> Units Covered</h4>
+                <ul class="units-list">
+                  <li><i class="fas fa-check-circle"></i> Basic Networking</li>
+                  <li><i class="fas fa-check-circle"></i> Basic Digital Marketing</li>
+                  <li><i class="fas fa-check-circle"></i> Computer Repair & Maintenance</li>
+                  <li><i class="fas fa-check-circle"></i> Basic Graphic Design</li>
+                  <li><i class="fas fa-check-circle"></i> IT Security</li>
+                  <li><i class="fas fa-check-circle"></i> Software Installation & Configuration</li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          <!-- Units tooltip on hover -->
-          <div class="units-tooltip">
-            <h4><i class="fas fa-book-open"></i> Units Covered</h4>
-            <ul class="units-list">
-              <li><i class="fas fa-check-circle"></i> Basic Networking</li>
-              <li><i class="fas fa-check-circle"></i> Basic Digital Markerting</li>
-              <li><i class="fas fa-check-circle"></i> Computer repair and Maintenance</li>
-              <li><i class="fas fa-check-circle"></i> Basic graphic design</li>
-              <li><i class="fas fa-check-circle"></i> IT security</li>
-              <li><i class="fas fa-check-circle"></i> Software installation and configuration</li>
-            </ul>
+          <!-- Course 2: Graphic Design -->
+          <div class="col-md-6 col-lg-4">
+            <div class="premier-card">
+              <div class="card-inner">
+                <div class="premier-icon">
+                  <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3 class="premier-title">Graphic Design</h3>
+                <div class="premier-meta">
+                  <span><i class="fas fa-clock"></i> 3 months</span>
+                  <span><i class="fas fa-tag"></i> KES 12,000</span>
+                </div>
+                <div class="view-units">
+                  <span>View course units</span>
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+              </div>
+
+              <div class="units-tooltip">
+                <h4><i class="fas fa-book-open"></i> Units Covered</h4>
+                <ul class="units-list">
+                  <li><i class="fas fa-check-circle"></i> Adobe Photoshop</li>
+                  <li><i class="fas fa-check-circle"></i> Adobe Illustrator</li>
+                  <li><i class="fas fa-check-circle"></i> Typography Fundamentals</li>
+                  <li><i class="fas fa-check-circle"></i> Corel Draw</li>
+                  <li><i class="fas fa-check-circle"></i> UI/UX Basics</li>
+                  <li><i class="fas fa-check-circle"></i> InDesign</li>
+                </ul>
+              </div>
+            </div>
           </div>
+
+          <!-- Course 3: Web Development -->
+          <div class="col-md-6 col-lg-4">
+            <div class="premier-card">
+              <div class="card-inner">
+                <div class="premier-icon">
+                  <i class="fas fa-code"></i>
+                </div>
+                <h3 class="premier-title">Web Development</h3>
+                <div class="premier-meta">
+                  <span><i class="fas fa-clock"></i> 5 months</span>
+                  <span><i class="fas fa-tag"></i> KES 25,000</span>
+                </div>
+                <div class="view-units">
+                  <span>View course units</span>
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+              </div>
+
+              <div class="units-tooltip">
+                <h4><i class="fas fa-book-open"></i> Units Covered</h4>
+                <ul class="units-list">
+                  <li><i class="fas fa-check-circle"></i> HTML5 & CSS3</li>
+                  <li><i class="fas fa-check-circle"></i> JavaScript Fundamentals</li>
+                  <li><i class="fas fa-check-circle"></i> React Basics</li>
+                  <li><i class="fas fa-check-circle"></i> Database Integration</li>
+                  <li><i class="fas fa-check-circle"></i> Responsive Design</li>
+                </ul>
+              </div>
+            </div>
+          </div>  
         </div>
+      </div>
 
-        
+      <!-- Additional Info -->
+      <div class="text-center mt-5">
+        <p class="text-muted">
+          <i class="fas fa-info-circle text-gold me-2"></i>
+          All short courses include certification upon completion. Registration ongoing.
+        </p>
+      </div>
+    </section>
+  </div>
 
-        <!-- Course 3: Graphic Design -->
-        <div class="premier-card">
-          <div class="card-inner">
-            <div class="premier-icon">
-              <i class="fas fa-paint-brush"></i>
-            </div>
-            <h3 class="premier-title">Graphic Design</h3>
-            <div class="premier-meta">
-              <span><i class="fas fa-clock"></i> 3 months</span>
-              <span><i class="fas fa-tag"></i> KES 12,000</span>
-            </div>
-            <div class="view-units">
-              <span>View course units</span>
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-
-          <div class="units-tooltip">
-            <h4><i class="fas fa-book-open"></i> Units Covered</h4>
-            <ul class="units-list">
-              <li><i class="fas fa-check-circle"></i> Adobe Photoshop</li>
-              <li><i class="fas fa-check-circle"></i> Adobe Illustrator</li>
-              <li><i class="fas fa-check-circle"></i> Typography Fundamentals</li>
-              <li><i class="fas fa-check-circle"></i> Corel Draw</li>
-              <li><i class="fas fa-check-circle"></i> UI/UX Basics</li>
-              <li><i class="fas fa-check-circle"></i> In-design</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Course 4: Web Development -->
-        <div class="premier-card">
-          <div class="card-inner">
-            <div class="premier-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <h3 class="premier-title">Web Development</h3>
-            <div class="premier-meta">
-              <span><i class="fas fa-clock"></i> 5 months</span>
-              <span><i class="fas fa-tag"></i> KES 25,000</span>
-            </div>
-            <div class="view-units">
-              <span>View course units</span>
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-
-          <div class="units-tooltip">
-            <h4><i class="fas fa-book-open"></i> Units Covered</h4>
-            <ul class="units-list">
-              <li><i class="fas fa-check-circle"></i> HTML5 & CSS3</li>
-              <li><i class="fas fa-check-circle"></i> JavaScript Fundamentals</li>
-              <li><i class="fas fa-check-circle"></i> React Basics</li>
-              <li><i class="fas fa-check-circle"></i> Database Integration</li>
-              <li><i class="fas fa-check-circle"></i> Responsive Design</li>
-            </ul>
-          </div>
-        </div>
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
 
        
-
-      
-
       <!-- Bottom decorative element -->
       <div style="margin-top: 30px; text-align: center; opacity: 0.6;">
         <i class="fas fa-chevron-down" style="color: #f4b532; font-size: 1.2rem;"></i>
