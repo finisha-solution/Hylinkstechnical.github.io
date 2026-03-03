@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery - Hylinks Technical Training Institute</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome 5 (free) for icons -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  
   <style>
     * {
       margin: 0;
@@ -20,13 +24,39 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 30px;
+      padding: 20px;
     }
 
     /* Demo wrapper */
     .demo-wrapper {
       width: 100%;
-      max-width: 1300px;
+      max-width: 1400px;
+    }
+
+    /* Back button */
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .back-btn a {
+      background: #003153;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid #f4b532;
+      transition: all 0.3s;
+    }
+
+    .back-btn a:hover {
+      background: #f4b532;
+      color: #003153;
+      transform: translateX(-5px);
     }
 
     /* ===== GALLERY SECTION - ELEGANT DESIGN ===== */
@@ -34,7 +64,7 @@
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       border-radius: 50px;
-      padding: 3rem;
+      padding: clamp(1.5rem, 5vw, 3rem);
       box-shadow: 0 30px 60px -20px rgba(0, 49, 83, 0.4);
       border: 1px solid rgba(244, 181, 50, 0.2);
     }
@@ -52,26 +82,28 @@
       display: flex;
       align-items: center;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .header-icon {
-      width: 80px;
-      height: 80px;
+      width: clamp(60px, 8vw, 80px);
+      height: clamp(60px, 8vw, 80px);
       background: linear-gradient(135deg, #003153, #1a4b6d);
       border-radius: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
+      font-size: clamp(28px, 4vw, 36px);
       color: #f4b532;
       box-shadow: 0 15px 30px rgba(0, 49, 83, 0.3);
     }
 
     .header-title h2 {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
       font-weight: 700;
       color: #003153;
       letter-spacing: -0.5px;
+      margin: 0;
     }
 
     .header-badge {
@@ -80,7 +112,7 @@
       padding: 12px 30px;
       border-radius: 60px;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -131,11 +163,8 @@
       color: #f4b532;
     }
 
-    /* Gallery grid */
+    /* Gallery grid - Bootstrap override */
     .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
       margin-bottom: 2rem;
     }
 
@@ -148,6 +177,7 @@
       cursor: pointer;
       transition: all 0.4s ease;
       aspect-ratio: 1/1;
+      width: 100%;
     }
 
     .gallery-item:hover {
@@ -180,7 +210,7 @@
     .gallery-item:nth-child(8) .gallery-image { background: linear-gradient(145deg, #003153, #1a4b6d); }
 
     .gallery-image i {
-      font-size: 3.5rem;
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
       color: rgba(244, 181, 50, 0.8);
       margin-bottom: 15px;
       transition: 0.3s;
@@ -192,7 +222,7 @@
     }
 
     .gallery-image span {
-      font-size: 1.2rem;
+      font-size: clamp(0.9rem, 3vw, 1.2rem);
       font-weight: 600;
       background: rgba(255, 255, 255, 0.2);
       padding: 8px 20px;
@@ -233,12 +263,12 @@
 
     .overlay-content h4 {
       color: #f4b532;
-      font-size: 1.3rem;
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
       margin-bottom: 8px;
     }
 
     .overlay-content p {
-      font-size: 0.95rem;
+      font-size: clamp(0.8rem, 2.5vw, 0.95rem);
       opacity: 0.9;
       margin-bottom: 15px;
     }
@@ -256,45 +286,7 @@
       font-size: 1.2rem;
     }
 
-    /* View more button */
-    .view-more-btn {
-      text-align: center;
-      margin-top: 2.5rem;
-    }
-
-    .btn-view-more {
-      background: #003153;
-      color: white;
-      border: 2px solid #f4b532;
-      padding: 16px 45px;
-      border-radius: 60px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 15px;
-      box-shadow: 0 15px 25px -8px rgba(0, 49, 83, 0.4);
-    }
-
-    .btn-view-more i {
-      color: #f4b532;
-      transition: 0.3s;
-    }
-
-    .btn-view-more:hover {
-      background: #f4b532;
-      color: #003153;
-      transform: translateY(-5px);
-    }
-
-    .btn-view-more:hover i {
-      color: #003153;
-      transform: translateX(5px);
-    }
-
-    /* Lightbox modal (hidden by default) */
+    /* Lightbox modal */
     .lightbox-modal {
       display: none;
       position: fixed;
@@ -306,41 +298,42 @@
       z-index: 1000;
       justify-content: center;
       align-items: center;
+      padding: 20px;
     }
 
     .lightbox-content {
       max-width: 800px;
-      width: 90%;
+      width: 100%;
       background: white;
       border-radius: 50px;
-      padding: 30px;
+      padding: clamp(1.5rem, 5vw, 3rem);
       text-align: center;
       position: relative;
       border: 5px solid #f4b532;
     }
 
     .lightbox-icon {
-      width: 120px;
-      height: 120px;
+      width: clamp(80px, 15vw, 120px);
+      height: clamp(80px, 15vw, 120px);
       background: linear-gradient(135deg, #003153, #1a4b6d);
       border-radius: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 50px;
+      font-size: clamp(30px, 6vw, 50px);
       color: #f4b532;
       margin: 0 auto 25px;
     }
 
     .lightbox-content h3 {
       color: #003153;
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
       margin-bottom: 15px;
     }
 
     .lightbox-content p {
       color: #666;
-      font-size: 1.2rem;
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
       margin-bottom: 25px;
     }
 
@@ -365,32 +358,72 @@
       transform: rotate(90deg);
     }
 
-    /* Responsive */
-    @media (max-width: 1100px) {
-      .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    /* Responsive breakpoints */
+    @media (max-width: 768px) {
+      .gallery-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .filter-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .close-lightbox {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
       }
     }
 
-    @media (max-width: 800px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 576px) {
+      body {
+        padding: 15px;
       }
-      .header-title h2 {
-        font-size: 2rem;
+      
+      .filter-btn {
+        width: 100%;
+        justify-content: center;
       }
-    }
-
-    @media (max-width: 500px) {
-      .gallery-grid {
-        grid-template-columns: 1fr;
+      
+      .nav-buttons {
+        flex-direction: column;
+      }
+      
+      .nav-btn {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
   <div class="demo-wrapper">
-    <a href="index1.html"><h2>Home</h2></a>
+    <!-- Back Button -->
+    <div class="back-btn">
+      <a href="index.html">
+        <i class="fas fa-arrow-left"></i> BACK TO HOME
+      </a>
+    </div>
+
     <!-- GALLERY SECTION -->
     <section class="gallery-section">
       <!-- Header -->
@@ -426,150 +459,166 @@
         </button>
       </div>
 
-      <!-- Gallery Grid -->
+      <!-- Gallery Grid - Bootstrap Grid -->
       <div class="gallery-grid">
-        <!-- Item 1 - Campus -->
-        <div class="gallery-item" onclick="openLightbox('campus1')">
-          <div class="gallery-image">
-            <i class="fas fa-university"></i>
-            <span>Campus</span>
-          </div>
-          <div class="gallery-overlay">
-            <div class="overlay-content">
-              <h4>Main Campus</h4>
-              <p>KN Business Centre</p>
-              <div class="overlay-icon">
-                <i class="fas fa-search-plus"></i>
+        <div class="row g-4">
+          <!-- Item 1 - Campus -->
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="gallery-item" onclick="openLightbox('campus1')">
+              <div class="gallery-image">
+                <i class="fas fa-university"></i>
+                <span>Campus</span>
+              </div>
+              <div class="gallery-overlay">
+                <div class="overlay-content">
+                  <h4>Main Campus</h4>
+                  <p>KN Business Centre</p>
+                  <div class="overlay-icon">
+                    <i class="fas fa-search-plus"></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Item 2 - Library -->
-        <div class="gallery-item" onclick="openLightbox('library')">
-          <div class="gallery-image">
-            <i class="fas fa-book"></i>
-            <span>Library</span>
-          </div>
-          <div class="gallery-overlay">
-            <div class="overlay-content">
-              <h4>Resource Center</h4>
-              <p>Modern library facilities</p>
-              <div class="overlay-icon">
-                <i class="fas fa-search-plus"></i>
+          <!-- Item 2 - Library -->
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="gallery-item" onclick="openLightbox('library')">
+              <div class="gallery-image">
+                <i class="fas fa-book"></i>
+                <span>Library</span>
+              </div>
+              <div class="gallery-overlay">
+                <div class="overlay-content">
+                  <h4>Resource Center</h4>
+                  <p>Modern library facilities</p>
+                  <div class="overlay-icon">
+                    <i class="fas fa-search-plus"></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Item 3 - Computer Lab -->
-        <div class="gallery-item" onclick="openLightbox('computerlab')">
-          <div class="gallery-image">
-            <i class="fas fa-laptop"></i>
-            <span>Computer Lab</span>
-          </div>
-          <div class="gallery-overlay">
-            <div class="overlay-content">
-              <h4>ICT Lab</h4>
-              <p>Modern computers & internet</p>
-              <div class="overlay-icon">
-                <i class="fas fa-search-plus"></i>
+          <!-- Item 3 - Computer Lab -->
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="gallery-item" onclick="openLightbox('computerlab')">
+              <div class="gallery-image">
+                <i class="fas fa-laptop"></i>
+                <span>Computer Lab</span>
+              </div>
+              <div class="gallery-overlay">
+                <div class="overlay-content">
+                  <h4>ICT Lab</h4>
+                  <p>Modern computers & internet</p>
+                  <div class="overlay-icon">
+                    <i class="fas fa-search-plus"></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Item 4 - Classroom -->
-        <div class="gallery-item" onclick="openLightbox('classroom')">
-          <div class="gallery-image">
-            <i class="fas fa-chalkboard"></i>
-            <span>Classroom</span>
-          </div>
-          <div class="gallery-overlay">
-            <div class="overlay-content">
-              <h4>Modern Classrooms</h4>
-              <p>Conducive learning environment</p>
-              <div class="overlay-icon">
-                <i class="fas fa-search-plus"></i>
+          <!-- Item 4 - Classroom -->
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="gallery-item" onclick="openLightbox('classroom')">
+              <div class="gallery-image">
+                <i class="fas fa-chalkboard"></i>
+                <span>Classroom</span>
+              </div>
+              <div class="gallery-overlay">
+                <div class="overlay-content">
+                  <h4>Modern Classrooms</h4>
+                  <p>Conducive learning environment</p>
+                  <div class="overlay-icon">
+                    <i class="fas fa-search-plus"></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Item 5 - Graduation -->
-        <div class="gallery-item" onclick="openLightbox('graduation')">
-          <div class="gallery-image">
-            <i class="fas fa-graduation-cap"></i>
-            <span>Graduation</span>
-          </div>
-          <div class="gallery-overlay">
-            <div class="overlay-content">
-              <h4>1st Graduation</h4>
-              <p>Class of 2024</p>
-              <div class="overlay-icon">
-                <i class="fas fa-search-plus"></i>
+          <!-- Item 5 - Graduation -->
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="gallery-item" onclick="openLightbox('graduation')">
+              <div class="gallery-image">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Graduation</span>
+              </div>
+              <div class="gallery-overlay">
+                <div class="overlay-content">
+                  <h4>1st Graduation</h4>
+                  <p>Class of 2024</p>
+                  <div class="overlay-icon">
+                    <i class="fas fa-search-plus"></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Item 6 - Students -->
-        <div class="gallery-item" onclick="openLightbox('students')">
-          <div class="gallery-image">
-            <i class="fas fa-users"></i>
-            <span>Students</span>
-          </div>
-          <div class="gallery-overlay">
-            <div class="overlay-content">
-              <h4>Student Life</h4>
-              <p>Group discussion & activities</p>
-              <div class="overlay-icon">
-                <i class="fas fa-search-plus"></i>
+          <!-- Item 6 - Students -->
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="gallery-item" onclick="openLightbox('students')">
+              <div class="gallery-image">
+                <i class="fas fa-users"></i>
+                <span>Students</span>
+              </div>
+              <div class="gallery-overlay">
+                <div class="overlay-content">
+                  <h4>Student Life</h4>
+                  <p>Group discussion & activities</p>
+                  <div class="overlay-icon">
+                    <i class="fas fa-search-plus"></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Item 7 - Workshop -->
-        <div class="gallery-item" onclick="openLightbox('workshop')">
-          <div class="gallery-image">
-            <i class="fas fa-tools"></i>
-            <span>Workshop</span>
-          </div>
-          <div class="gallery-overlay">
-            <div class="overlay-content">
-              <h4>Practical Training</h4>
-              <p>Hands-on experience</p>
-              <div class="overlay-icon">
-                <i class="fas fa-search-plus"></i>
+          <!-- Item 7 - Workshop -->
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="gallery-item" onclick="openLightbox('workshop')">
+              <div class="gallery-image">
+                <i class="fas fa-tools"></i>
+                <span>Workshop</span>
+              </div>
+              <div class="gallery-overlay">
+                <div class="overlay-content">
+                  <h4>Practical Training</h4>
+                  <p>Hands-on experience</p>
+                  <div class="overlay-icon">
+                    <i class="fas fa-search-plus"></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Item 8 - Event -->
-        <div class="gallery-item" onclick="openLightbox('event')">
-          <div class="gallery-image">
-            <i class="fas fa-calendar-alt"></i>
-            <span>Events</span>
-          </div>
-          <div class="gallery-overlay">
-            <div class="overlay-content">
-              <h4>Career Fair 2025</h4>
-              <p>Industry partners</p>
-              <div class="overlay-icon">
-                <i class="fas fa-search-plus"></i>
+          <!-- Item 8 - Event -->
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="gallery-item" onclick="openLightbox('event')">
+              <div class="gallery-image">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Events</span>
+              </div>
+              <div class="gallery-overlay">
+                <div class="overlay-content">
+                  <h4>Career Fair 2025</h4>
+                  <p>Industry partners</p>
+                  <div class="overlay-icon">
+                    <i class="fas fa-search-plus"></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      
     </section>
   </div>
 
-  <!-- Lightbox Modal (hidden by default) -->
+  <!-- Lightbox Modal -->
   <div class="lightbox-modal" id="lightbox">
     <div class="lightbox-content">
       <div class="close-lightbox" onclick="closeLightbox()">
@@ -579,18 +628,21 @@
         <i class="fas fa-image"></i>
       </div>
       <h3 id="lightbox-title">Campus Gallery</h3>
-      <p id="lightbox-description">Hylinks Technical Training  Institute - Excellence in Training</p>
-      <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
-        <span style="background: #f4b532; color: #003153; padding: 10px 20px; border-radius: 30px;">
+      <p id="lightbox-description">Hylinks Technical Training Institute - Excellence in Training</p>
+      <div class="nav-buttons">
+        <span class="nav-btn" style="background: #f4b532; color: #003153;">
           <i class="fas fa-chevron-left"></i> Previous
         </span>
-        <span style="background: #003153; color: white; padding: 10px 20px; border-radius: 30px;">
+        <span class="nav-btn" style="background: #003153; color: white;">
           Next <i class="fas fa-chevron-right"></i>
         </span>
       </div>
     </div>
   </div>
 
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
   <script>
     function openLightbox(item) {
       const lightbox = document.getElementById('lightbox');
@@ -622,7 +674,7 @@
           break;
         case 'graduation':
           icon.innerHTML = '<i class="fas fa-graduation-cap"></i>';
-          title.innerHTML = '20th Graduation Ceremony';
+          title.innerHTML = '1st Graduation Ceremony';
           desc.innerHTML = 'Class of 2024 - Celebrating success';
           break;
         case 'students':
@@ -642,7 +694,7 @@
           break;
         default:
           icon.innerHTML = '<i class="fas fa-images"></i>';
-          title.innerHTML = 'Masii Professional Institute Gallery';
+          title.innerHTML = 'Hylinks Technical Training Institute Gallery';
           desc.innerHTML = 'Browse all 36+ photos of campus, events, and student life';
       }
       
@@ -666,10 +718,7 @@
       btn.addEventListener('click', function() {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         this.classList.add('active');
-        
-        // Here you would filter gallery items
-        // For demo, just show message
-        alert('Filter by: ' + this.innerText.trim() + '\nIn production, this would filter gallery items by category.');
+      
       });
     });
   </script>
